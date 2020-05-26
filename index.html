@@ -14,4 +14,69 @@
   </style>
 </head>
 
+
+<body>
+
+  <div>
+    <input type="file" id="file" />  
+  </div>
+  <div id="image-container">
+    <canvas width="500" height="500"></canvas>
+    <div>
+      <span>Top Line:</span><br/>
+      <input id="topLineText" type="text"><br/>
+      <span>Bottom Line:</span><br/>
+      <input id="bottomLineText" type="text"><br/>
+      <button id="saveBtn">Save</button>
+    </div>
+  </div>
+
+  <script>
+    function textChangeListener (evt) {
+      var id = evt.target.id;
+      var text = evt.target.value;
+      
+      if (id == "topLineText") {
+        window.topLineText = text;
+      } else {
+        window.bottomLineText = text;
+      }
+      
+      redrawMeme(window.imageSrc, window.topLineText, window.bottomLineText);
+    }
+
+
+    function redrawMeme(image, topLine, bottomLine) {
+      
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext("2d");
+      if (image != null)
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      
+      
+      ctx.font = '30pt Impact';
+      ctx.textAlign = 'center';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 3;
+      ctx.fillStyle = 'white';
+      
+      if (topLine != null) {
+        ctx.fillText(topLine, canvas.width / 2, 40);
+        ctx.strokeText(topLine, canvas.width / 2, 40);
+      }
+      
+      if (bottomLine != null) {
+        ctx.fillText(bottomLine, canvas.width / 2, canvas.height - 20);
+        ctx.strokeText(bottomLine, canvas.width / 2, canvas.height - 20);
+      }
+    }
+
+    
+
+
+</script>
+
+</body>
+
+
 </html>
