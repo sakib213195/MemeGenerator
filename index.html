@@ -21,13 +21,13 @@
     <input type="file" id="file" />  
   </div>
   <div id="image-container">
-    <canvas width="500" height="500"></canvas>
+    <canvas width="500%" height="610%"></canvas>
     <div>
       <span>Top Line:</span><br/>
       <input id="topLineText" type="text"><br/>
       <span>Bottom Line:</span><br/>
       <input id="bottomLineText" type="text"><br/>
-      <button id="saveBtn">Save</button>
+     
     </div>
   </div>
 
@@ -109,7 +109,7 @@
     input1.oninput = textChangeListener;
     input2.oninput = textChangeListener;
     document.getElementById('file').addEventListener('change', handleFileSelect, false);
-    document.querySelector('button').addEventListener('click', saveFile, false);
+    document.querySelector('button').addEventListener('click', saveFile, true);
 
 
 </script>
